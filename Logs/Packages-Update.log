@@ -1,10 +1,25 @@
 
+<<<<<<< Updated upstream
+=== Tue Aug 15 09:53:32 2023
+=======
+<<<<<<< HEAD
+=== Tue Aug 15 10:57:45 2023
+>>>>>>> Stashed changes
+
+Packages were changed.
+Update Mode: updateDependencies
+
+The following packages were added:
+<<<<<<< Updated upstream
+=======
+=======
 === Tue Aug 15 09:53:32 2023
 
 Packages were changed.
 Update Mode: updateDependencies
 
 The following packages were added:
+>>>>>>> Stashed changes
   com.unity.2d.sprite@1.0.0
   com.unity.2d.tilemap@1.0.0
   com.unity.ads@4.4.2
@@ -13,6 +28,10 @@ The following packages were added:
   com.unity.ide.rider@3.0.24
   com.unity.ide.visualstudio@2.0.18
   com.unity.ide.vscode@1.2.5
+<<<<<<< Updated upstream
+=======
+>>>>>>> parent of 97a57fb (Revert "Singleton")
+>>>>>>> Stashed changes
   com.unity.modules.ai@1.0.0
   com.unity.modules.androidjni@1.0.0
   com.unity.modules.animation@1.0.0
@@ -44,6 +63,11 @@ The following packages were added:
   com.unity.modules.vr@1.0.0
   com.unity.modules.wind@1.0.0
   com.unity.modules.xr@1.0.0
+<<<<<<< Updated upstream
+=======
+<<<<<<< HEAD
+=======
+>>>>>>> Stashed changes
   com.unity.purchasing@4.9.3
   com.unity.test-framework@1.1.33
   com.unity.textmeshpro@3.0.6
@@ -51,3 +75,7 @@ The following packages were added:
   com.unity.ugui@1.0.0
   com.unity.xr.legacyinputhelpers@2.1.10
   com.unity.ai.navigation@1.1.4
+<<<<<<< Updated upstream
+=======
+>>>>>>> parent of 97a57fb (Revert "Singleton")
+>>>>>>> Stashed changes
