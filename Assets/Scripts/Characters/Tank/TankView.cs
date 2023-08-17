@@ -4,15 +4,9 @@ using UnityEngine;
 
 public class TankView : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    private TankController _controller;
+    public void SetTankController(TankController tankController)
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        _controller = tankController;
     }
 }
