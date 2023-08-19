@@ -11,8 +11,13 @@ public class TankService : MonoBehaviour
     public TankController controller;
     void Start()
     {
-            CreateNewTank();
+           CreateNewTank();
         TankMovement();
+
+    }
+    private void Update()
+    {
+        
     }
     private void CreateNewTank()
     {

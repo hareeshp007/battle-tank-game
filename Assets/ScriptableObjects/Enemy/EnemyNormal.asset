@@ -15,5 +15,5 @@ MonoBehaviour:
   type: 1
   speed: 20
   health: 50
-  EnemyView: {fileID: -510877613538457507, guid: fd85e2ad94966684a8baad91730b08d3,
+  EnemyView: {fileID: 7423268055617244539, guid: fd85e2ad94966684a8baad91730b08d3,
     type: 3}

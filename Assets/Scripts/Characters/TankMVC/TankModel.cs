@@ -8,6 +8,7 @@ public class TankModel
     private TankScriptableObject _tankScriptableObject;
     public int Speed { get; }
     public int Health { get; }
+    public float Rotationspeed { get; }
     public TankType TankType { get; }
 
     public TankModel(int speed,int health) {
@@ -20,6 +21,7 @@ public class TankModel
         _tankScriptableObject = tankSO;
         Speed=(int)tankSO.speed;
         Health=(int)tankSO.health;
+        Rotationspeed=(int)tankSO.rotationspeed;
         TankType = tankSO.TankType;
     }
     public void SetTankController(TankController tankController)

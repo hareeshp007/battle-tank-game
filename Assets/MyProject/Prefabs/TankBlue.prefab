@@ -18,6 +18,16 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4890501287720052536, guid: fcf69490f33831448b4effb5159b4028,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4890501287720052536, guid: fcf69490f33831448b4effb5159b4028,
+        type: 3}
+      propertyPath: m_StepOffset
+      value: 0.1
+      objectReference: {fileID: 0}
     - target: {fileID: 8777450748948822708, guid: fcf69490f33831448b4effb5159b4028,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -96,7 +106,7 @@ PrefabInstance:
     - target: {fileID: 8777450748950722604, guid: fcf69490f33831448b4effb5159b4028,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8777450748950722604, guid: fcf69490f33831448b4effb5159b4028,
         type: 3}
@@ -118,9 +128,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: TankBlue
       objectReference: {fileID: 0}
+    - target: {fileID: 9130503623995268742, guid: fcf69490f33831448b4effb5159b4028,
+        type: 3}
+      propertyPath: characterController
+      value: 
+      objectReference: {fileID: 6435493459097487792}
     m_RemovedComponents:
-    - {fileID: 3402773718297907246, guid: fcf69490f33831448b4effb5159b4028, type: 3}
+    - {fileID: 0}
+    - {fileID: 5652496463203308308, guid: fcf69490f33831448b4effb5159b4028, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fcf69490f33831448b4effb5159b4028, type: 3}
+--- !u!143 &6435493459097487792 stripped
+CharacterController:
+  m_CorrespondingSourceObject: {fileID: 4890501287720052536, guid: fcf69490f33831448b4effb5159b4028,
+    type: 3}
+  m_PrefabInstance: {fileID: 1914586430001114760}
+  m_PrefabAsset: {fileID: 0}
