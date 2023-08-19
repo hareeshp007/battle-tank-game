@@ -6,19 +6,18 @@ using UnityEngine;
 public class TankService : MonoBehaviour
 {
     public TankView tankView;
-    public TankScriptableObject[] tankConfig;
+    //public TankScriptableObject[] tankConfig;
+    public TankScriptableObjectList tankConfig;
     // Start is called before the first frame update
     void Start()
     {
-        for(int i = 0; i < 10; i++)
-        {
-            CreateNewTank(i);
-        }
+            CreateNewTank();
     }
 
-    private void CreateNewTank(int i)
+    private void CreateNewTank()
     {
-        TankScriptableObject tank = tankConfig[i];
+        
+        TankScriptableObject tank = tankConfig.tankObjects[0];
         TankModel model = new TankModel(tank);
         TankController tankController=new TankController(model,tank);
     }

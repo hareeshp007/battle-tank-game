@@ -5,6 +5,7 @@ using UnityEngine;
 public class TankModel 
 {
     private TankController _controller;
+    private TankScriptableObject _tankScriptableObject;
     public int Speed { get; }
     public int Health { get; }
     public TankType TankType { get; }
@@ -16,6 +17,7 @@ public class TankModel
     }
     public TankModel(TankScriptableObject tankSO)
     {
+        _tankScriptableObject = tankSO;
         Speed=(int)tankSO.speed;
         Health=(int)tankSO.health;
         TankType = tankSO.TankType;
@@ -24,4 +26,6 @@ public class TankModel
     {
         _controller = tankController;
     }
+
+    public int SpeedLive { get{ return (int)_tankScriptableObject.speed; } }
 }

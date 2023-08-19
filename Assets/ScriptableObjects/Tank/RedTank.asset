@@ -16,4 +16,6 @@ MonoBehaviour:
   speed: 20
   health: 100
   tankName: Mark22
-  tankView: {fileID: 0}
+  tankView: {fileID: 3157058232859503866, guid: 49f17210bc77f824b9f73cbcfb4a892f,
+    type: 3}
+  tankTransform: {x: -10, y: 0, z: -10}

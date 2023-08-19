@@ -12,3 +12,9 @@ public class TankScriptableObject : ScriptableObject
     public TankView tankView;
     public Vector3 tankTransform;
 }
+
+[CreateAssetMenu(fileName = "TankScriptableObjectList", menuName = "ScriptableObject/Tank/TankList")]
+public class TankScriptableObjectList : ScriptableObject
+{
+    public TankScriptableObject[] tankObjects;
+}

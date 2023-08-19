@@ -9,13 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2f055900545c2404b9b945078769f3e0, type: 3}
-  m_Name: GreenTank
+  m_Script: {fileID: 11500000, guid: d564c9133c842164997aeebf23c023e8, type: 3}
+  m_Name: Normal
   m_EditorClassIdentifier: 
-  TankType: 3
-  speed: 10
-  health: 150
-  tankName: HeavyTank
-  tankView: {fileID: 8081920430984709819, guid: fcf69490f33831448b4effb5159b4028,
-    type: 3}
-  tankTransform: {x: 20, y: 0, z: 0}
+  type: 0
+  speed: 0
+  duration: 0
+  damage: 0
+  bulletView: {fileID: 0}
