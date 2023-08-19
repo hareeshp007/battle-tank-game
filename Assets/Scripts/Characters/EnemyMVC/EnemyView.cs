@@ -4,15 +4,9 @@ using UnityEngine;
 
 public class EnemyView : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+       private EnemyController _EnemyController;
+        public void SetEnemyController(EnemyController enemyController)
+        {
+            _EnemyController = enemyController;
+        }
 }

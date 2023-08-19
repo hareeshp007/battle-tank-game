@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d564c9133c842164997aeebf23c023e8, type: 3}
   m_Name: Slow
   m_EditorClassIdentifier: 
-  type: 0
-  speed: 0
-  duration: 0
-  damage: 0
-  bulletView: {fileID: 0}
+  type: 2
+  speed: 10
+  duration: 20
+  damage: 30
+  bulletView: {fileID: -1695947090798315246, guid: 3d68991f4f54e0b419dc147a0abfb597,
+    type: 3}

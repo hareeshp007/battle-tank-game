@@ -16,6 +16,6 @@ MonoBehaviour:
   speed: 30
   health: 80
   tankName: neon
-  tankView: {fileID: 7690254775336511539, guid: c98eb01bb8a64f042a389374496b8906,
+  tankView: {fileID: 7216994889984667662, guid: c98eb01bb8a64f042a389374496b8906,
     type: 3}
-  tankTransform: {x: 10, y: 0, z: 0}
+  tankTransform: {x: 0, y: 0, z: 0}

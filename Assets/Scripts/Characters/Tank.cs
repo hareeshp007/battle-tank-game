@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -16,6 +17,12 @@ public class Tank : MonoBehaviour
     void Start()
     {
         characterController = GetComponent<CharacterController>();
+
+    }
+
+    public void SetJoystick(Joystick Move)
+    {
+        joystick = Move;
     }
 
     // Update is called once per frame

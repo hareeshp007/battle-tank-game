@@ -2,7 +2,6 @@ using UnityEngine;
 
 public class BulletServices : MonoBehaviour
 {
-    public BulletView bulletView;
     public BulletScriptableObjectList BulletList;
     void Start()
     {

@@ -1,26 +1,30 @@
+
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class TankService : MonoBehaviour
 {
-    public TankView tankView;
+    //public TankView tankView;
     //public TankScriptableObject[] tankConfig;
+    public Joystick joystickMove;
     public TankScriptableObjectList tankConfig;
-    // Start is called before the first frame update
+    public TankController controller;
     void Start()
     {
             CreateNewTank();
+        TankMovement();
     }
-
     private void CreateNewTank()
     {
         
         TankScriptableObject tank = tankConfig.tankObjects[0];
         TankModel model = new TankModel(tank);
-        TankController tankController=new TankController(model,tank);
+        controller = new TankController(model,tank);
+    }
+    private void TankMovement()
+    {
+        controller.move(joystickMove);
     }
 
-   
+
 }

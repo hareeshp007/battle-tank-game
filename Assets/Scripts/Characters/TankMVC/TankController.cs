@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
 
 public class TankController 
@@ -10,9 +9,15 @@ public class TankController
     {
         _model = tankModel;
         _view = tankSO.tankView;
+        _view.SetTankController(this);
         Vector3 TankTransform = tankSO.tankTransform;
         GameObject.Instantiate(_view.gameObject,TankTransform,Quaternion.identity);
          
     }
 
+    public void move(Joystick joystick1)
+    {
+        Tank tank = _view.gameObject.GetComponent<Tank>();
+        tank.SetJoystick(joystick1);
+    }
 }

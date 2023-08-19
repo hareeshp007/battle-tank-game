@@ -1,18 +1,18 @@
-using System.Collections;
-using System.Collections.Generic;
+
 using UnityEngine;
 
-public class EnemyController : MonoBehaviour
+public class EnemyController 
 {
-    // Start is called before the first frame update
-    void Start()
+    private EnemyModel _model;
+    private EnemyView _view;
+    private EnemyScriptableObject _scriptableObject;
+
+    public EnemyController(EnemyModel model,  EnemyScriptableObject EnemySO,Transform Enemypos)
     {
-        
+        _model = model;
+        _view = EnemySO.EnemyView;
+        _scriptableObject = EnemySO;
+        GameObject.Instantiate(_view.gameObject, Enemypos);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

@@ -1,18 +1,28 @@
-using System.Collections;
-using System.Collections.Generic;
+
 using UnityEngine;
 
 public class EnemyServices : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public EnemyScriptableObjectList EnemyList;
+    public Transform[] Spawnpos;
+    private void Start()
     {
-        
+        CreateEnemy();
     }
-
-    // Update is called once per frame
-    void Update()
+    private void CreateEnemy()
     {
-        
+        foreach(Transform i in Spawnpos)
+        {
+            CreateEnemy(i);
+        }
+        //EnemyScriptableObject Enemy = EnemyList.EnemyObjects[0];
+       // EnemyModel enemyModel = new EnemyModel(Enemy);
+        //EnemyController controller = new EnemyController(enemyModel, Enemy);
+    }
+    private void CreateEnemy(Transform pos)
+    {
+        EnemyScriptableObject Enemy = EnemyList.EnemyObjects[0];
+        EnemyModel enemyModel = new EnemyModel(Enemy);
+        EnemyController controller = new EnemyController(enemyModel, Enemy,pos);
     }
 }
