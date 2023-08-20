@@ -4,32 +4,35 @@ using UnityEngine;
 
 public class TankService : MonoBehaviour
 {
-    //public TankView tankView;
-    //public TankScriptableObject[] tankConfig;
-    public Joystick joystickMove;
+    public TankController PlayerController { get; private set; }
+    public BulletServices _BulletServices;
+    [SerializeField]
+    private TankView playerView;
+    [SerializeField]
+    private TankModel playerModel;
+    [SerializeField]
+    private TankScriptableObject playerObject;
+    [SerializeField]
+    private TankView playerPrefab;
+    [SerializeField]
     public TankScriptableObjectList tankConfig;
-    public TankController controller;
-    void Start()
-    {
-           CreateNewTank();
-        TankMovement();
+    
 
-    }
-    private void Update()
+    private void Awake()
     {
-        
-    }
-    private void CreateNewTank()
-    {
-        
-        TankScriptableObject tank = tankConfig.tankObjects[0];
-        TankModel model = new TankModel(tank);
-        controller = new TankController(model,tank);
-    }
-    private void TankMovement()
-    {
-        controller.move(joystickMove);
+        //base.Awake();
+        int tankIndex = UnityEngine.Random.Range(0, tankConfig.tankObjects.Length);
+        this.playerObject = tankConfig.tankObjects[tankIndex];
+        CreateTank();
     }
 
+    private void CreateTank()
+    {
+        this.playerModel = new TankModel(playerObject);
+        this.playerPrefab = playerObject.tankView;
+        this.playerView = GameObject.Instantiate<TankView>(playerPrefab);
+        this.PlayerController = new TankController(playerModel, playerView);
+        this.playerView.SetBulletService(_BulletServices);
+    }
 
 }

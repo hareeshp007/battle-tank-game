@@ -10,7 +10,7 @@ public class BulletModel
         _BscriptableObject = bulletSo;
         speed=bulletSo.speed;
         damage=bulletSo.damage;
-        Duration =bulletSo.duration;
+        Duration =(int)bulletSo.duration;
         type = bulletSo.type;
     }
     public void SetBulletController(BulletController bulletController)

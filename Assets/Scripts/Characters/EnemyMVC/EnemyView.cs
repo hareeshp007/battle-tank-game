@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,4 +10,9 @@ public class EnemyView : MonoBehaviour
         {
             _EnemyController = enemyController;
         }
+
+    internal void Death()
+    {
+        throw new NotImplementedException();
+    }
 }

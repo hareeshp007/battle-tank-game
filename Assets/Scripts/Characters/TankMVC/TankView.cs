@@ -5,25 +5,65 @@ using UnityEngine;
 
 public class TankView : MonoBehaviour
 {
-    public CharacterController characterController;
-    private TankController _controller;
-    private void Awake()
+    
+    [SerializeField] private Rigidbody playerRigidBody;
+    [SerializeField] private ParticleSystem tankExplosion;
+    [SerializeField] private Transform shootPoint;
+
+    private TankController playerController;
+    private BulletServices bulletServices;
+    private int bulletCount = 0;
+    private float verticalInput;
+    private float horizontalInput;
+    private bool fireInput = false;
+    
+    public Rigidbody GetPlayerRigidBody()
     {
-        characterController = this.gameObject.GetComponent<CharacterController>();
+        return this.playerRigidBody;
     }
-    private void OnEnable()
+    public Transform GetshootPoint()
     {
-        characterController.enabled = true;
-        Debug.Log("character controller is "+characterController.enabled);
+        return this.shootPoint;
     }
-    private void Start()
+
+    public int GetHealth()
     {
-        
+        return playerController.PlayerModel.Health;
     }
     public void SetTankController(TankController tankController)
     {
-        _controller = tankController;
+        playerController = tankController;
+    }
+    private void Update()
+    {
+        HandleInputs();
+
+        playerController.Rotate(horizontalInput);
+        if (fireInput)
+        {
+            bulletServices.Shoot(shootPoint);
+            bulletCount++;
+
+        }
+    }
+    private void FixedUpdate()
+    {
+        playerController.Move(verticalInput);
+    }
+    private void HandleInputs()
+    {
+        fireInput = Input.GetKeyDown(KeyCode.Space);
+        verticalInput = Input.GetAxis("Vertical1");
+        horizontalInput = Input.GetAxis("Horizontal1");
     }
 
-   
+    internal void Death(GameObject gameObject)
+    {
+        throw new NotImplementedException();
+    }
+
+    internal void SetBulletService(BulletServices _bulletservices)
+    {
+        bulletServices = _bulletservices;
+    }
 }

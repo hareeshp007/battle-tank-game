@@ -13,8 +13,10 @@ MonoBehaviour:
   m_Name: BlueTank
   m_EditorClassIdentifier: 
   TankType: 1
-  speed: 30
+  speed: 15
   health: 80
+  Damage: 10
+  rotationspeed: 50
   tankName: neon
   tankView: {fileID: 7216994889984667662, guid: c98eb01bb8a64f042a389374496b8906,
     type: 3}

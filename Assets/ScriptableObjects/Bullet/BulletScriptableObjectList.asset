@@ -12,7 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 0}
   m_Name: BulletScriptableObjectList
   m_EditorClassIdentifier: Assembly-CSharp::BulletScriptableObjectList
-  bulletObjects:
-  - {fileID: 11400000, guid: dfd7897ac7bdba64bb9738e8a2e0a3c0, type: 2}
-  - {fileID: 11400000, guid: 6750ff68faec7af45b8517f728c16acd, type: 2}
-  - {fileID: 11400000, guid: d795b060b05c8da42b550e20823aa4ef, type: 2}
+  bulletObjects: []

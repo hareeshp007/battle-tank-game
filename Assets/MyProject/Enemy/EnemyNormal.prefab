@@ -99,10 +99,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 100112, guid: 002e2a607f5b64c48be0b3b0d8b8bfdd,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 6887436257802414440}
-    - targetCorrespondingSourceObject: {fileID: 100112, guid: 002e2a607f5b64c48be0b3b0d8b8bfdd,
-        type: 3}
-      insertIndex: -1
       addedObject: {fileID: 856571642864237165}
     - targetCorrespondingSourceObject: {fileID: 100112, guid: 002e2a607f5b64c48be0b3b0d8b8bfdd,
         type: 3}
@@ -145,23 +141,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 3599060754030608265}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &6887436257802414440
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3599060754030573721}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9b751ec461ce09149a45fe8d66ee510e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  joystick: {fileID: 2396509216999840492, guid: f0fa475c6606acc409102d2d8b549ca1,
-    type: 3}
-  characterController: {fileID: 0}
-  speed: 3
-  rotationSpeed: 3
 --- !u!143 &856571642864237165
 CharacterController:
   m_ObjectHideFlags: 0
