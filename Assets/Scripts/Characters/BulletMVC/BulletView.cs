@@ -16,16 +16,19 @@ public class BulletView : MonoBehaviour
     private BulletController _controller;
     [SerializeField]
     private GameObject shooterObject;
+    [SerializeField]
+    private int Damage;
     public void SetShooterObject(GameObject tank)
     {
         this.shooterObject = tank;
+        Debug.Log("shooterObject :" + shooterObject.name);
     }
     public void SetBulletController(BulletController bulletController,BulletModel bulletModel)
     {
         _controller = bulletController;
         bulletSpeed=bulletModel.speed;
         travelDistance = bulletModel.Duration;
-
+        Damage = bulletModel.damage;
     }
     private void Start()
     {
@@ -50,20 +53,23 @@ public class BulletView : MonoBehaviour
 
     private void OnTriggerEnter(Collider collidedObject)
     {
+        Debug.Log(collidedObject.name + "  "+ shooterObject.name);
+
         if (collidedObject.gameObject != shooterObject.gameObject)
         {
             Destroy(gameObject);
         }
 
-        if (collidedObject.CompareTag("PlayerTank") && shooterObject.CompareTag("EnemyTank"))
+        if (collidedObject.gameObject.GetComponent<TankView>() != null && shooterObject.GetComponent<EnemyView>() != null)
         {
             Debug.Log("Player is Hit", shooterObject.gameObject);
-            collidedObject.gameObject.GetComponent<TankView>().Death(shooterObject.gameObject);
+            collidedObject.gameObject.GetComponent<TankView>().TakeDamageview(Damage);
         }
-        else if (collidedObject.CompareTag("EnemyTank") && shooterObject.CompareTag("PlayerTank"))
+        else if (collidedObject.gameObject.GetComponent<EnemyView>()!=null && shooterObject.GetComponent<TankView>() != null)
         {
+            Debug.Log("Enemy is Hit", shooterObject.gameObject);
             collidedObject.gameObject.GetComponent<EnemyView>().Death();
-            Destroy(collidedObject.gameObject, 0.5f);
+            //Destroy(collidedObject.gameObject, 0.5f);
         }
     }
 }

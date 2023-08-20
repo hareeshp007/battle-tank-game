@@ -8,6 +8,8 @@ public class EnemyScriptableObject : ScriptableObject
     public int speed;
     public int health;
     public EnemyView EnemyView;
+    public Transform PatrolPosition;
+    public int PatrolRadius;
 }
 [CreateAssetMenu(fileName = "EnemyScriptableObjectList", menuName = "ScriptableObject/Enemy/EnemyList")]
 public class EnemyScriptableObjectList : ScriptableObject

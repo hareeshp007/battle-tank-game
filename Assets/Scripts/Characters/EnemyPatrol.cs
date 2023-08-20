@@ -1,10 +1,9 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class EnemyView : MonoBehaviour
+public class EnemyPatrol : MonoBehaviour
 {
     public NavMeshAgent agent;
     public float range; //radius of sphere
@@ -20,12 +19,21 @@ public class EnemyView : MonoBehaviour
 
     void Update()
     {
-        Patrol();
+        if (agent.remainingDistance <= agent.stoppingDistance) //done with path
+        {
+            Vector3 point;
+            if (RandomPoint(centrePoint.position, range, out point)) //pass in our centre point and radius of area
+            {
+                Debug.DrawRay(point, Vector3.up, Color.blue, 1.0f); //so you can see with gizmos
+                agent.SetDestination(point);
+            }
+        }
+
     }
     bool RandomPoint(Vector3 center, float range, out Vector3 result)
     {
 
-        Vector3 randomPoint = center + UnityEngine.Random.insideUnitSphere * range; //random point in a sphere 
+        Vector3 randomPoint = center + Random.insideUnitSphere * range; //random point in a sphere 
         NavMeshHit hit;
         if (NavMesh.SamplePosition(randomPoint, out hit, 1.0f, NavMesh.AllAreas)) //documentation: https://docs.unity3d.com/ScriptReference/AI.NavMesh.SamplePosition.html
         {
@@ -37,33 +45,5 @@ public class EnemyView : MonoBehaviour
 
         result = Vector3.zero;
         return false;
-    }
-    private EnemyController _EnemyController;
-        public void SetEnemyController(EnemyController enemyController)
-        {
-            _EnemyController = enemyController;
-        }
-
-    public void Death()
-    {
-        Destroy(this.gameObject);
-    }
-    public void Patrol()
-    {
-        if (agent.remainingDistance <= agent.stoppingDistance) //done with path
-        {
-            Vector3 point;
-            if (RandomPoint(centrePoint.position, range, out point)) //pass in our centre point and radius of area
-            {
-                Debug.DrawRay(point, Vector3.up, Color.blue, 1.0f); //so you can see with gizmos
-                agent.SetDestination(point);
-            }
-        }
-    }
-
-    public void SetPatrolPosition(Transform patrolPosition, int patrolRadius)
-    {
-        centrePoint =this.gameObject.transform;
-        range= patrolRadius;
     }
 }

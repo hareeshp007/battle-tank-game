@@ -1,4 +1,5 @@
 
+using System;
 using UnityEngine;
 
 public class EnemyController 
@@ -12,7 +13,10 @@ public class EnemyController
         _model = model;
         _view = EnemySO.EnemyView;
         _scriptableObject = EnemySO;
+        _view.SetEnemyController(this);
+        _view.SetPatrolPosition(EnemySO.PatrolPosition, EnemySO.PatrolRadius);
         GameObject.Instantiate(_view.gameObject, Enemypos);
     }
+
 
 }

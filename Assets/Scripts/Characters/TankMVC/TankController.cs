@@ -49,7 +49,7 @@ public class TankController
         }
     }
 
-    private void Death()
+    public void Death()
     {
         Debug.Log("Player Dead");
     }

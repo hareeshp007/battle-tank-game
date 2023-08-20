@@ -41,7 +41,7 @@ public class TankView : MonoBehaviour
         playerController.Rotate(horizontalInput);
         if (fireInput)
         {
-            bulletServices.Shoot(shootPoint);
+            bulletServices.Shoot(shootPoint,this.gameObject);
             bulletCount++;
 
         }
@@ -57,8 +57,9 @@ public class TankView : MonoBehaviour
         horizontalInput = Input.GetAxis("Horizontal1");
     }
 
-    internal void Death(GameObject gameObject)
+    public void TakeDamageview(int Damage)
     {
+        playerController.TakeDamage(Damage);
         throw new NotImplementedException();
     }
 

@@ -23,25 +23,12 @@ public class BulletServices : MonoBehaviour
         bulletPrefab.SetBulletController(BulletController,bulletModel);
     }
 
-    /*private void createBullet()
-    {
-        BulletView bulletView = GameObject.Instantiate<BulletView>(bulletView);
-        bulletView.gameObject.SetActive(false);
-        SetTransform(bulletView, newTransform);
-        return bulletView;
-    }*/
-
-    public void createBullet(BulletType bulletType)
-    {
-        
-        BulletScriptableObject bullet = BulletList.bulletObjects[(int)bulletType];
-
-    }
-    public void Shoot(Transform shootPoint)
+    public void Shoot(Transform shootPoint,GameObject shooter)
     {
         //Transform shootPoint = PlayerService.PlayerController.PlayerView.GetshootPoint();
         //Bullet();
+        
         BulletView bullet = GameObject.Instantiate<BulletView>(bulletPrefab, shootPoint.position, shootPoint.rotation);
-        bullet.SetShooterObject(this.gameObject);
+        bullet.SetShooterObject(shooter);
     }
 }

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class TankService : MonoBehaviour
 {
+    public CameraFollow CameraFollow;
     public TankController PlayerController { get; private set; }
     public BulletServices _BulletServices;
     [SerializeField]
@@ -33,6 +34,7 @@ public class TankService : MonoBehaviour
         this.playerView = GameObject.Instantiate<TankView>(playerPrefab);
         this.PlayerController = new TankController(playerModel, playerView);
         this.playerView.SetBulletService(_BulletServices);
+        CameraFollow.SetTarget(this.playerView.gameObject.transform);
     }
 
 }
