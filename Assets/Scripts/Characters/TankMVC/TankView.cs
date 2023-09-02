@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TankView : MonoBehaviour
+public class TankView : MonoBehaviour,IDamegable
 {
     public static event Action<int> AchevementsUnlock;
     [SerializeField] private Rigidbody playerRigidBody;
@@ -66,7 +66,7 @@ public class TankView : MonoBehaviour
         horizontalInput = Input.GetAxis("Horizontal1");
     }
 
-    public void TakeDamageview(int Damage)
+    public void TakeDamage(int Damage)
     {
         playerController.TakeDamage(Damage);
         

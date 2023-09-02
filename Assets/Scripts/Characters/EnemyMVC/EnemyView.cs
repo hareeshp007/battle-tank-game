@@ -6,7 +6,7 @@ using Tanks.tank;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class EnemyView : MonoBehaviour
+public class EnemyView : MonoBehaviour,IDamegable
 {
     public EnemyController _EnemyController { get; private set; }
     public NavMeshAgent agent;
@@ -196,5 +196,10 @@ public class EnemyView : MonoBehaviour
             return 0;
         }
         return timer + Time.deltaTime;
+    }
+
+    public void TakeDamage()
+    {
+        
     }
 }

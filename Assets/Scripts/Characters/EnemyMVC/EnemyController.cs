@@ -71,4 +71,21 @@ public class EnemyController
     {
         return _model.speed;
     }
+    public void TakeDamage(int damage)
+    {
+        int health = _model.health - damage;
+        health = health >= 0 ? health : 0;
+        _model.SetHealth(health);
+
+        if (health == 0)
+        {
+            Death();
+        }
+    }
+
+    private void Death()
+    {
+        Debug.Log("Enemy Died");
+        _view.Death();
+    }
 }

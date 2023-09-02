@@ -60,17 +60,12 @@ public class BulletView : MonoBehaviour
             Destroy(gameObject);
         }
 
-        if (collidedObject.gameObject.GetComponent<TankView>() != null && shooterObject.GetComponent<EnemyView>() != null)
+        if (collidedObject.gameObject.GetComponent<IDamegable>() != null )
         {
             Debug.Log("Player is Hit", shooterObject.gameObject);
-            collidedObject.gameObject.GetComponent<TankView>().TakeDamageview(Damage);
+            collidedObject.gameObject.GetComponent<IDamegable>().TakeDamage(Damage);
         }
-        else if (collidedObject.gameObject.GetComponent<EnemyView>()!=null && shooterObject.GetComponent<TankView>() != null)
-        {
-            Debug.Log("Enemy is Hit", shooterObject.gameObject);
-            collidedObject.gameObject.GetComponent<EnemyView>().Death();
-            //Destroy(collidedObject.gameObject, 0.5f);
-        }
+        
     }
 }
 

@@ -1,11 +1,13 @@
 
 
+using System;
+
 public class EnemyModel 
 {
     private EnemyController _EnemyController;
     private EnemyScriptableObject _EnemyScriptableObject;
     public int speed { get; }
-    public int health { get; }
+    public int health { get; private set; }
     public EnemyType type { get; }
     public EnemyModel(EnemyScriptableObject enemySO)
     {
@@ -18,5 +20,11 @@ public class EnemyModel
     {
         _EnemyController = enemyController;
     }
+
+    public void SetHealth(int _health)
+    {
+        health=_health;
+    }
+
     public int SpeedLive { get { return (int)_EnemyScriptableObject.speed; } }
 }
