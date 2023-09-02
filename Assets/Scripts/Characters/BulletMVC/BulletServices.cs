@@ -9,9 +9,16 @@ public class BulletServices : MonoBehaviour
     public BulletModel bulletModel;
     public BulletScriptableObject bulletObject;
     public TankService PlayerService;
+    private ServicePoolBullet ServicePoolBullet;
+
     void Awake()
     {
+        
         Bullet();
+    }
+    private void Start()
+    {
+        ServicePoolBullet = GetComponent<ServicePoolBullet>();
     }
     private void Bullet()
     {
@@ -27,8 +34,9 @@ public class BulletServices : MonoBehaviour
     {
         //Transform shootPoint = PlayerService.PlayerController.PlayerView.GetshootPoint();
         //Bullet();
-        
-        BulletView bullet = GameObject.Instantiate<BulletView>(bulletPrefab, shootPoint.position, shootPoint.rotation);
+
+        BulletView bullet = ServicePoolBullet.shoot(shootPoint,shooter,bulletPrefab);
+        //BulletView bullet = GameObject.Instantiate<BulletView>(bulletPrefab, shootPoint.position, shootPoint.rotation);
         bullet.SetShooterObject(shooter);
     }
 }

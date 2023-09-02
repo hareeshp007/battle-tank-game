@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class BulletView : MonoBehaviour
@@ -18,6 +19,8 @@ public class BulletView : MonoBehaviour
     private GameObject shooterObject;
     [SerializeField]
     private int Damage;
+    [SerializeField]
+    private ServicePoolBullet servicePoolBullet;
     public void SetShooterObject(GameObject tank)
     {
         this.shooterObject = tank;
@@ -30,7 +33,7 @@ public class BulletView : MonoBehaviour
         travelDistance = bulletModel.Duration;
         Damage = bulletModel.damage;
     }
-    private void Start()
+    private void OnEnable()
     {
         if (_controller != null)
         {
@@ -47,7 +50,8 @@ public class BulletView : MonoBehaviour
         transform.position = Vector3.MoveTowards(transform.position, endPoint, bulletSpeed * Time.deltaTime);
         if ((endPoint - transform.position).sqrMagnitude < 0.1)
         {
-            Destroy(gameObject);
+            gameObject.SetActive(false);
+            servicePoolBullet.ReturnItem(this);
         }
     }
 
@@ -57,7 +61,8 @@ public class BulletView : MonoBehaviour
 
         if (collidedObject.gameObject != shooterObject.gameObject)
         {
-            Destroy(gameObject);
+            gameObject.SetActive(false);
+            servicePoolBullet.ReturnItem(this);
         }
 
         if (collidedObject.gameObject.GetComponent<IDamegable>() != null )
@@ -66,6 +71,11 @@ public class BulletView : MonoBehaviour
             collidedObject.gameObject.GetComponent<IDamegable>().TakeDamage(Damage);
         }
         
+    }
+
+    public void SetBulletPool(ServicePoolBullet _servicePoolBullet)
+    {
+        servicePoolBullet= _servicePoolBullet;
     }
 }
 
