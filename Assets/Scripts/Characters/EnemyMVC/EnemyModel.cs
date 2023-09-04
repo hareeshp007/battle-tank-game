@@ -1,7 +1,4 @@
 
-
-using System;
-
 public class EnemyModel 
 {
     private EnemyController _EnemyController;

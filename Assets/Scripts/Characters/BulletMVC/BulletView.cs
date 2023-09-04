@@ -1,8 +1,9 @@
-using System;
+
 using UnityEngine;
 
 public class BulletView : MonoBehaviour
 {
+    public ParticleSystem BulletExplosion;
     [SerializeField]
     private int travelDistance = 10;
     [SerializeField]
@@ -21,6 +22,7 @@ public class BulletView : MonoBehaviour
     private int Damage;
     [SerializeField]
     private ServicePoolBullet servicePoolBullet;
+    
     public void SetShooterObject(GameObject tank)
     {
         this.shooterObject = tank;
@@ -50,6 +52,8 @@ public class BulletView : MonoBehaviour
         transform.position = Vector3.MoveTowards(transform.position, endPoint, bulletSpeed * Time.deltaTime);
         if ((endPoint - transform.position).sqrMagnitude < 0.1)
         {
+            BulletExplosion.Play();
+            SoundManager.Instance.Play(Sounds.BulletExplosion);
             gameObject.SetActive(false);
             servicePoolBullet.ReturnItem(this);
         }
@@ -59,15 +63,17 @@ public class BulletView : MonoBehaviour
     {
         Debug.Log(collidedObject.name + "  "+ shooterObject.name);
 
-        if (collidedObject.gameObject != shooterObject.gameObject)
+        if (collidedObject.gameObject != shooterObject)
         {
+            BulletExplosion.Play();
+            SoundManager.Instance.Play(Sounds.BulletExplosion);
             gameObject.SetActive(false);
             servicePoolBullet.ReturnItem(this);
         }
 
-        if (collidedObject.gameObject.GetComponent<IDamegable>() != null )
+        if (collidedObject.gameObject.GetComponent<IDamegable>() != null && collidedObject.gameObject!=shooterObject )
         {
-            Debug.Log("Player is Hit", shooterObject.gameObject);
+            Debug.Log("Player is Hit", shooterObject);
             collidedObject.gameObject.GetComponent<IDamegable>().TakeDamage(Damage);
         }
         

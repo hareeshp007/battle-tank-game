@@ -87,12 +87,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f5eae596f087b5458735a10e95829db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  BulletExplosion: {fileID: 19807510, guid: 89e78efe92dfe5a42837b392cdb0bf9e, type: 3}
   travelDistance: 20
   startPoint: {x: 0, y: 0, z: 0}
   endPoint: {x: 0, y: 0, z: 0}
   offset: {x: 0, y: 0, z: 0}
   bulletSpeed: 10
   shooterObject: {fileID: 0}
+  Damage: 0
+  servicePoolBullet: {fileID: 0}
 --- !u!65 &4619624608630760344
 BoxCollider:
   m_ObjectHideFlags: 0

@@ -1,7 +1,6 @@
+
 using System;
 using System.Collections;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 using Tanks.tank;
 using UnityEngine;
 using UnityEngine.AI;
@@ -11,7 +10,7 @@ public class EnemyView : MonoBehaviour,IDamegable
     public EnemyController _EnemyController { get; private set; }
     public NavMeshAgent agent;
     public float range; //radius of sphere
-    public new ParticleSystem particleSystem;
+    public ParticleSystem EnemyExplosion;
     [SerializeField]
     private float PSDelay;
     private float playerSqrDistance;
@@ -20,8 +19,9 @@ public class EnemyView : MonoBehaviour,IDamegable
     [SerializeField]
     private float attackSqrRadius = 100f;
     public Transform centrePoint; //centre of the area the agent wants to move around in
-    //instead of centrePoint you can set it as the transform of the agent if you don't care about a specific area
+                                  //instead of centrePoint you can set it as the transform of the agent if you don't care about a specific area
 
+    public bool EnemyisMoving { get; private set; }
     [SerializeField]
     private TankView player;
     [SerializeField]
@@ -41,6 +41,13 @@ public class EnemyView : MonoBehaviour,IDamegable
 
     [SerializeField]
     private float speed;
+    private int health;
+    [SerializeField]
+    private UIManager uIManager;
+    public EnemyServices enemyServices { get; private set; }
+    public float ShootDelay { get; private set; }
+
+    private float timer;
 
     void Start()
     {
@@ -56,6 +63,7 @@ public class EnemyView : MonoBehaviour,IDamegable
         currentState.OnEnterState();
         agent = GetComponent<NavMeshAgent>();
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<TankView>();
+        timer = 0;
     }
     public TankView GetTankView()
     {
@@ -65,6 +73,10 @@ public class EnemyView : MonoBehaviour,IDamegable
     void Update()
     {
         currentState.OnUpdateState();    
+        if(currentState.GetState() == Enemystate.AttackState)
+        {
+            
+        }
     }
     private void FixedUpdate()
     {
@@ -97,18 +109,14 @@ public class EnemyView : MonoBehaviour,IDamegable
         currentState= enemyStates;
         Debug.Log("Current EnemyState :" + currentState.GetState().ToString());
         currentState.OnEnterState();
-
-
     }
-
-
-    public bool EnemyisMoving { get; private set; }
-
     public void SetEnemyController(EnemyController enemyController)
         {
         _EnemyController = enemyController;
         speed=_EnemyController.GetSpeed();
+        health = _EnemyController.GetHealth();
         Debug.Log("EnemyController-EnemyView Connection Established" + _EnemyController.ToString());
+        _EnemyController.SetBulletServices(this);
         }
     public bool RandomPoint(Vector3 center, float range, out Vector3 result)
     {
@@ -124,11 +132,17 @@ public class EnemyView : MonoBehaviour,IDamegable
         result = Vector3.zero;
         return false;
     }
-    public IEnumerator Death()
+    public void Died()
     {
-        particleSystem.Play();
+        this.gameObject.GetComponent<Collider>().enabled = false;
+        EnemyExplosion.Play();
         agent.SetDestination(transform.position);
         EnemyisMoving = false;
+        uIManager.GUIEnemyDied();
+        StartCoroutine(Death());
+    }
+    public IEnumerator Death()
+    {       
         yield return new WaitForSeconds(PSDelay);
         //particle effect
         Destroy(this.gameObject);
@@ -163,17 +177,11 @@ public class EnemyView : MonoBehaviour,IDamegable
        bulletServices.Shoot(shootPoint,this.gameObject);
     }
 
-    public void Chase(Vector3 playerPos,float speed)
-    {
-        Vector3 enemypos=transform.position;
-        Vector3 newEnemyPos = Vector3.MoveTowards(enemypos, playerPos, speed * Time.deltaTime);
-        transform.LookAt(playerPos);
-        transform.position = newEnemyPos;
-    }
 
-    public void setBulletService(BulletServices _bulletServices)
+    public void setBulletService(BulletServices _bulletServices,UIManager _uIManager)
     {
         bulletServices= _bulletServices;
+        uIManager=_uIManager;
     }
 
     public void Chase()
@@ -185,21 +193,27 @@ public class EnemyView : MonoBehaviour,IDamegable
         transform.position = newEnemyPos;
     }
 
-    public float Attack(float timer, float delay)
+    public void Attack(float delay)
     {
-
         Vector3 playerPos = player.transform.position;
         this.transform.LookAt(playerPos);
-        if (timer > delay)
+        ShootDelay = delay;
+        timer += Time.deltaTime;
+        if (timer > ShootDelay)
         {
             this.shoot();
-            return 0;
+            timer = 0;
         }
-        return timer + Time.deltaTime;
-    }
 
-    public void TakeDamage()
-    {
+        
+    }
+    public void TakeDamage(int damage) {
+        health -= damage;
+        if (health < 0)
+        {
+            SoundManager.Instance.Play(Sounds.EnemyDeath);
+            Died();
+        }
         
     }
 }

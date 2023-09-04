@@ -1,9 +1,10 @@
-using System;
+
 using UnityEngine;
 
 public class BulletServices : MonoBehaviour
 {
-    public BulletScriptableObjectList BulletList;
+    [SerializeField]
+    private BulletScriptableObjectList BulletList;
     public BulletController BulletController;
     public BulletView bulletPrefab;
     public BulletModel bulletModel;
@@ -12,8 +13,7 @@ public class BulletServices : MonoBehaviour
     private ServicePoolBullet ServicePoolBullet;
 
     void Awake()
-    {
-        
+    {       
         Bullet();
     }
     private void Start()
@@ -34,7 +34,7 @@ public class BulletServices : MonoBehaviour
     {
         //Transform shootPoint = PlayerService.PlayerController.PlayerView.GetshootPoint();
         //Bullet();
-
+        SoundManager.Instance.Play(Sounds.ShotFired);
         BulletView bullet = ServicePoolBullet.shoot(shootPoint,shooter,bulletPrefab);
         //BulletView bullet = GameObject.Instantiate<BulletView>(bulletPrefab, shootPoint.position, shootPoint.rotation);
         bullet.SetShooterObject(shooter);

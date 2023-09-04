@@ -1,6 +1,5 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class TankView : MonoBehaviour,IDamegable
@@ -11,12 +10,20 @@ public class TankView : MonoBehaviour,IDamegable
     [SerializeField] private Transform shootPoint;
 
     private TankController playerController;
-    private BulletServices bulletServices;
+    public BulletServices bulletServices { get; private set; }
     private int bulletCount = 0;
     private float verticalInput;
     private float horizontalInput;
     private bool fireInput = false;
-    
+
+    public float ExplosionDuration = 5f;
+    private bool soundOn;
+
+    public UIManager uIManager { get; private set; }
+    private void Start()
+    {
+        uIManager.GUIupdateHealth(playerController.getHealth());
+    }
     public Rigidbody GetPlayerRigidBody()
     {
         return this.playerRigidBody;
@@ -37,7 +44,7 @@ public class TankView : MonoBehaviour,IDamegable
     private void Update()
     {
         HandleInputs();
-
+        
         playerController.Rotate(horizontalInput);
         if (fireInput)
         {
@@ -57,8 +64,10 @@ public class TankView : MonoBehaviour,IDamegable
 
     private void FixedUpdate()
     {
+        
         playerController.Move(verticalInput);
     }
+
     private void HandleInputs()
     {
         fireInput = Input.GetKeyDown(KeyCode.Space);
@@ -69,7 +78,8 @@ public class TankView : MonoBehaviour,IDamegable
     public void TakeDamage(int Damage)
     {
         playerController.TakeDamage(Damage);
-        
+        int health =playerController.getHealth();
+        uIManager.GUIupdateHealth(health);
     }
 
     public void SetBulletService(BulletServices _bulletservices)
@@ -79,6 +89,24 @@ public class TankView : MonoBehaviour,IDamegable
 
     public void death()
     {
+        tankExplosion.Play();
+        uIManager.MainMenuActive();
+        SoundManager.Instance.Play(Sounds.PlayerDied);
+        StartCoroutine(Die());
+        
+    }
+    public IEnumerator Die()
+    {
+        this.gameObject.GetComponent<Collider>().enabled = false;
+        yield return new WaitForSeconds(ExplosionDuration);
+        this.gameObject.SetActive(false);
         Debug.Log("Player is Dead_view");
     }
+
+    internal void setUIManager(UIManager _uIManager)
+    {
+        Debug.Log("UI manager connection");
+        uIManager = _uIManager;
+    }
+
 }

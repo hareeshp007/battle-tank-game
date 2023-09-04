@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TankType: 1
   speed: 15
-  health: 80
+  health: 100
   Damage: 10
   rotationspeed: 50
   tankName: neon

@@ -6,14 +6,11 @@ public class EnemyAttackState : EnemyStates
 {
 
     [SerializeField]
-    private float timer;
-    [SerializeField]
     private float delay;
 
     public override void OnEnterState()
     {
         UnityEngine.Debug.Log("Attacking Enter");
-        timer = 0f;
     }
     public override void OnExitState()
     {
@@ -21,7 +18,7 @@ public class EnemyAttackState : EnemyStates
     }
     public override void OnUpdateState()
     {
-      timer= _EnemyView.Attack(timer,delay);
+      _EnemyView.Attack(delay);
     }
     public override Enemystate GetState()
     {

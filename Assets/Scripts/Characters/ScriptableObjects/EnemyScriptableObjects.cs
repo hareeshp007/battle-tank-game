@@ -11,8 +11,3 @@ public class EnemyScriptableObject : ScriptableObject
     public Transform PatrolPosition;
     public int PatrolRadius;
 }
-[CreateAssetMenu(fileName = "EnemyScriptableObjectList", menuName = "ScriptableObject/Enemy/EnemyList")]
-public class EnemyScriptableObjectList : ScriptableObject
-{
-    public EnemyScriptableObject[] EnemyObjects;
-}

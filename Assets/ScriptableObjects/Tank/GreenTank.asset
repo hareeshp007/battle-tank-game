@@ -13,8 +13,10 @@ MonoBehaviour:
   m_Name: GreenTank
   m_EditorClassIdentifier: 
   TankType: 3
-  speed: 10
+  speed: 15.2
   health: 150
+  Damage: 10
+  rotationspeed: 50
   tankName: HeavyTank
   tankView: {fileID: 9130503623995268742, guid: fcf69490f33831448b4effb5159b4028,
     type: 3}

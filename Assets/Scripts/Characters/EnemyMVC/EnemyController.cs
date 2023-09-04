@@ -7,14 +7,17 @@ using UnityEngine.AI;
 
 public class EnemyController 
 {
-    private EnemyModel _model;
-    protected EnemyView _view;
+    public EnemyModel _model { get; private set; }
+    public EnemyView _view { get; private set; }
     private EnemyScriptableObject _scriptableObject;
     private TankView Player;
     private BulletServices _bulletServices;
+    private UIManager _manager;
 
-    public EnemyController(EnemyModel model,  EnemyScriptableObject EnemySO,Transform Enemypos, List<GameObject> enemies,BulletServices bulletServices)
+    public EnemyController(EnemyModel model,  EnemyScriptableObject EnemySO,Transform Enemypos, List<GameObject> enemies,BulletServices bulletServices,UIManager uiManager)
     {
+        _bulletServices = bulletServices;
+        _manager = uiManager;
         _model = model;
         _view = EnemySO.EnemyView;
         _scriptableObject = EnemySO;
@@ -23,13 +26,11 @@ public class EnemyController
         GameObject enemy= GameObject.Instantiate(_view.gameObject, Enemypos);
         enemies.Add(enemy);
         Debug.Log(enemies.Count);
-        SetBulletServices(bulletServices);
         
     }
-    public void SetBulletServices(BulletServices bulletServices)
+    public void SetBulletServices(EnemyView view)
     {
-        _bulletServices = bulletServices;
-        _view.setBulletService(_bulletServices);
+        view.setBulletService(_bulletServices,_manager);
     }
     public EnemyView GetEnemyview()
     {
@@ -76,9 +77,10 @@ public class EnemyController
         int health = _model.health - damage;
         health = health >= 0 ? health : 0;
         _model.SetHealth(health);
-
+        Debug.Log(_view.name + ": " + health);
         if (health == 0)
         {
+            _view.Died();
             Death();
         }
     }
@@ -86,6 +88,11 @@ public class EnemyController
     private void Death()
     {
         Debug.Log("Enemy Died");
-        _view.Death();
+        
+    }
+
+    public int GetHealth()
+    {
+       return _model.health;
     }
 }

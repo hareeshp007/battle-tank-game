@@ -108,8 +108,25 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[1]
       value: 
       objectReference: {fileID: 2100000, guid: 463052f3f7389124f9e7b34b0b931d0d, type: 2}
+    - target: {fileID: 7216994889984667662, guid: c98eb01bb8a64f042a389374496b8906,
+        type: 3}
+      propertyPath: tankExplosion
+      value: 
+      objectReference: {fileID: 1500168751826610495}
+    - target: {fileID: 7216994889984667662, guid: c98eb01bb8a64f042a389374496b8906,
+        type: 3}
+      propertyPath: ExplosionDuration
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 5047049997862859469, guid: c98eb01bb8a64f042a389374496b8906, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c98eb01bb8a64f042a389374496b8906, type: 3}
+--- !u!198 &1500168751826610495 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 6176952753038503414, guid: c98eb01bb8a64f042a389374496b8906,
+    type: 3}
+  m_PrefabInstance: {fileID: 4713397738979394761}
+  m_PrefabAsset: {fileID: 0}

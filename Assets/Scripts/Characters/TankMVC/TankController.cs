@@ -1,3 +1,4 @@
+
 using System;
 using UnityEngine;
 
@@ -39,6 +40,7 @@ public class TankController
     }
     public void TakeDamage(int damage)
     {
+        Debug.Log("Health :"+ PlayerModel.Health);
         int health = PlayerModel.Health - damage;
         health = health >= 0 ? health : 0;
         PlayerModel.SetHealth(health);
@@ -46,6 +48,7 @@ public class TankController
         if (health == 0)
         {
             Death();
+            
             PlayerView.death();
         }
     }
@@ -55,4 +58,8 @@ public class TankController
         Debug.Log("Player Dead");
     }
 
+    internal int getHealth()
+    {
+        return PlayerModel.Health;
+    }
 }

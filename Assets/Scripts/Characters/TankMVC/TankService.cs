@@ -5,8 +5,9 @@ using UnityEngine.Analytics;
 
 public class TankService : MonoBehaviour
 {
-   
 
+    [SerializeField]
+    private TankScriptableObjectList tankConfig;
     public CameraFollow CameraFollow;
     public TankController PlayerController { get; private set; }
     public BulletServices _BulletServices;
@@ -18,13 +19,13 @@ public class TankService : MonoBehaviour
     private TankScriptableObject playerObject;
     [SerializeField]
     private TankView playerPrefab;
+
     [SerializeField]
-    public TankScriptableObjectList tankConfig;
+    private UIManager UIManager;
     
 
     private void Awake()
     {
-        //base.Awake();
         int tankIndex = UnityEngine.Random.Range(0, tankConfig.tankObjects.Length);
         this.playerObject = tankConfig.tankObjects[tankIndex];
         CreateTank();
@@ -35,6 +36,7 @@ public class TankService : MonoBehaviour
         this.playerModel = new TankModel(playerObject);
         this.playerPrefab = playerObject.tankView;
         this.playerView = GameObject.Instantiate<TankView>(playerPrefab);
+        this.playerView.setUIManager(UIManager);
         this.PlayerController = new TankController(playerModel, playerView);
         this.playerView.SetBulletService(_BulletServices);
         CameraFollow.SetTarget(this.playerView.gameObject.transform);

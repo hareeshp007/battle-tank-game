@@ -15,6 +15,6 @@ MonoBehaviour:
   type: 2
   speed: 10
   duration: 20
-  damage: 30
+  damage: 15
   bulletView: {fileID: -1695947090798315246, guid: 3d68991f4f54e0b419dc147a0abfb597,
     type: 3}

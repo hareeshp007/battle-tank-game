@@ -3,9 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class EnemyServices : MonoBehaviour
 {
-    public EnemyScriptableObjectList EnemyList;
+    [SerializeField]
+    private EnemyScriptableObjectList EnemyList;
     public Transform[] Spawnpos;
     [SerializeField]
     private float destroyDelay;
@@ -14,27 +16,31 @@ public class EnemyServices : MonoBehaviour
     private List<GameObject> enemies;
     [SerializeField]
     private BulletServices bulletServices;
+    [SerializeField]
+    private UIManager uiManager;
+    [SerializeField]
+    private int EnemiesCount;
     private void Start()
     {
-        CreateEnemy();
+        EnemiesCount = Spawnpos.Length;
+        CreateEnemies();
     }
-    private void CreateEnemy()
+    private void CreateEnemies()
     {
         foreach(Transform i in Spawnpos)
         {
-            CreateEnemy(i);
+            CreateEnemy(i); 
         }
+        uiManager.GUIupdateEnemies(enemies.Count);
         //EnemyScriptableObject Enemy = EnemyList.EnemyObjects[0];
-       // EnemyModel enemyModel = new EnemyModel(Enemy);
+        // EnemyModel enemyModel = new EnemyModel(Enemy);
         //EnemyController controller = new EnemyController(enemyModel, Enemy);
     }
     private void CreateEnemy(Transform pos)
     {
         EnemyScriptableObject Enemy = EnemyList.EnemyObjects[0];
         EnemyModel enemyModel = new EnemyModel(Enemy);
-        controller = new EnemyController(enemyModel, Enemy,pos,enemies,bulletServices);
-
-
+        controller = new EnemyController(enemyModel, Enemy,pos,enemies,bulletServices,uiManager);
     }
     public IEnumerator KillAllEnemies()
     {
@@ -48,5 +54,19 @@ public class EnemyServices : MonoBehaviour
     public List<GameObject> GetEnemies()
     {
         return enemies;
+    }
+    public void EnemyDied()
+    {
+        if(enemies.Count > 0)
+        {
+            EnemiesCount--;
+            uiManager.GUIupdateEnemies(EnemiesCount);
+        }
+        else
+        {
+            Debug.Log("All Enemies Died");
+            uiManager.GameWonMenu();
+        }
+        
     }
 }

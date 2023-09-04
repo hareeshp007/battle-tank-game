@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName ="TankScriptableObject", menuName ="ScriptableObject/Tank/NewTank")]
@@ -15,8 +13,4 @@ public class TankScriptableObject : ScriptableObject
     public Vector3 tankTransform;
 }
 
-[CreateAssetMenu(fileName = "TankScriptableObjectList", menuName = "ScriptableObject/Tank/TankList")]
-public class TankScriptableObjectList : ScriptableObject
-{
-    public TankScriptableObject[] tankObjects;
-}
+

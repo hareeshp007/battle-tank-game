@@ -15,6 +15,8 @@ MonoBehaviour:
   TankType: 2
   speed: 20
   health: 100
+  Damage: 10
+  rotationspeed: 50
   tankName: Mark22
   tankView: {fileID: 2688280470011475143, guid: 49f17210bc77f824b9f73cbcfb4a892f,
     type: 3}
