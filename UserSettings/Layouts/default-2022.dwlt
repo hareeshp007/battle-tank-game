@@ -48,7 +48,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 100}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 41
+  controlID: 89
 --- !u!114 &3
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -68,8 +68,8 @@ MonoBehaviour:
     y: 0
     width: 455
     height: 939
-  m_MinSize: {x: 276, y: 71}
-  m_MaxSize: {x: 4001, y: 4021}
+  m_MinSize: {x: 275, y: 50}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 14}
   m_Panes:
   - {fileID: 14}
@@ -120,8 +120,8 @@ MonoBehaviour:
     y: 582
     width: 1465
     height: 357
-  m_MinSize: {x: 101, y: 121}
-  m_MaxSize: {x: 4001, y: 4021}
+  m_MinSize: {x: 100, y: 100}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 17}
   m_Panes:
   - {fileID: 13}
@@ -523,21 +523,21 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 3ea60000
     m_LastClickedID: 42558
-    m_ExpandedIDs: 000000006c6e00006e6e0000706e0000726e0000746e00004aa600005ca6000000ca9a3b
+    m_ExpandedIDs: 000000001470000016700000187000001a7000001c7000001e70000020700000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
-      m_Name: Enemy
-      m_OriginalName: Enemy
+      m_Name: 
+      m_OriginalName: 
       m_EditFieldRect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 0
         height: 0
-      m_UserData: 42584
+      m_UserData: 0
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
-      m_OriginalEventType: 0
+      m_OriginalEventType: 11
       m_IsRenamingFilename: 1
       m_ClientGUIView: {fileID: 5}
     m_SearchString: 
@@ -551,7 +551,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 000000006c6e00006e6e0000706e0000726e0000746e0000
+    m_ExpandedIDs: 000000001470000016700000187000001a7000001c7000001e70000020700000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -693,9 +693,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 3ea60000
+      m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: eeb2faff7af0faff7e1afbffdc26fbff7c6dfbff7e6dfbfff873fbff3296fbff08adfbffdeadfbffdeb2fbff0cb9fbff0eb9fbff98bffbfff8c4fbffe6cafbff2ad1fbfff8d8fbfffad8fbff7adcfbff7ae1fbffe4e7fbffea04fcffec04fcff3611fcff3811fcff8e17fcff601afcffc026fcffec32fcffc84afcff105afcffae68fcfffe72fcfff67dfcff0c86fcffa28cfcffc494fcff5aa1fcff5ca1fcff18a8fcff5cb3fcffd0b9fcff9ec0fcffbac6fcff8cccfcff6ad2fcff16d8fcff54e2fcfff0e7fcffb4edfcffecf4fcff7a05fdff640ffdffac16fdffb827fdff0a34fdffd43afdff0247fdff504dfdff7c53fdff5a5afdffb867fdff166dfdff7872fdff2a78fdff9685fdff2092fdff5c98fdff309ffdffb2a7fdff721cfeff4422fefffc27feff342efeff767dfeff887dfeff3083feffe898feff10a3feff26aefefff6b8feffa8ccfeff00d2feffa8e1fefffa13ffff7076fffff0fafffff4ffffffb0670000ba670000e0670000ee670000fa6700001c680000326800006468000094680000fc7c0100227d0100307d0100ec7d0100088e01002e8e01003c8e01006a8e0100f88e01009e9c0100ac9c01007ea401008ca401002eac010054ac010062ac01001aad0100e6b301000cb401001ab4010048b40100d6b401006ec301007cc30100aa0b0200be0b0200ca0b0200fc0b0200e28902000aa4020096dd020012de020090f402009ef40200b2f90200101103001a110300444103006e580300225b0300b06f0300ba6f0300c86f0300d46f03000c70030096790300e0790300187a0300467c0300627c03006c7c03007a7c0300867c0300a87c0300c27c0300267d03000ecc030012fd030020fd0300
+      m_ExpandedIDs: 40d9ffff8ed9ffff04e1ffff3ae6ffff6eebffff96f0fffff0faffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
