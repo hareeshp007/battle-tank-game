@@ -13,14 +13,14 @@ public class BulletServices : MonoBehaviour
     private ServicePoolBullet ServicePoolBullet;
 
     void Awake()
-    {
-        BulletInit();
+    {       
+        Bullet();
     }
     private void Start()
     {
         ServicePoolBullet = GetComponent<ServicePoolBullet>();
     }
-    private void BulletInit()
+    private void Bullet()
     {
         int bulletIndex = UnityEngine.Random.Range(0, BulletList.bulletObjects.Length);
         this.bulletObject = BulletList.bulletObjects[bulletIndex];

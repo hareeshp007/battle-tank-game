@@ -49,10 +49,6 @@ public class BulletView : MonoBehaviour
 
     private void Update()
     {
-        move();
-    }
-    private void move()
-    {
         transform.position = Vector3.MoveTowards(transform.position, endPoint, bulletSpeed * Time.deltaTime);
         if ((endPoint - transform.position).sqrMagnitude < 0.1)
         {
