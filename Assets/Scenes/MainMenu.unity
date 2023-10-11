@@ -310,7 +310,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   LevelButton: {fileID: 105318071}
-  LevelName: Level2
+  LevelName: Level 2
   Levelnum: 2
 --- !u!114 &105318071
 MonoBehaviour:
@@ -1263,7 +1263,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   LevelButton: {fileID: 929488744}
-  LevelName: Level1
+  LevelName: Level 1
   Levelnum: 1
 --- !u!114 &929488744
 MonoBehaviour:
@@ -2962,7 +2962,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   LevelButton: {fileID: 2126392025}
-  LevelName: Level3
+  LevelName: Level 3
   Levelnum: 3
 --- !u!114 &2126392025
 MonoBehaviour:
