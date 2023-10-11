@@ -69,10 +69,7 @@ public class EnemyView : MonoBehaviour,IDamegable
     void Update()
     {
         currentState.OnUpdateState();    
-        if(currentState.GetState() == Enemystate.AttackState)
-        {
-            
-        }
+        
     }
     private void FixedUpdate()
     {
@@ -117,14 +114,12 @@ public class EnemyView : MonoBehaviour,IDamegable
         }
     public bool RandomPoint(Vector3 center, float range, out Vector3 result)
     {
-
-        Vector3 randomPoint = center + UnityEngine.Random.insideUnitSphere * range; //random point in a sphere 
+        Vector3 randomPoint = center + UnityEngine.Random.insideUnitSphere * range; 
         NavMeshHit hit;
         if (NavMesh.SamplePosition(randomPoint, out hit, 1.0f, NavMesh.AllAreas))         {
             result = hit.position;
             return true;
         }
-
         result = Vector3.zero;
         return false;
     }
