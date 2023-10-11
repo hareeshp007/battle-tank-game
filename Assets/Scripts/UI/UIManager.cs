@@ -136,16 +136,7 @@ public class UIManager : MonoBehaviour
     }
     public void NextLevel()
     {
-        if(CurrLevel+1<=MaxLevel)
-        {
-            SceneManager.LoadScene(CurrLevel + 1);
-        }
-        
-        else
-        {
-            Debug.Log("Levels Completed");
-            SceneManager.LoadScene(mainMenuScene);
-        }
+       LevelManeger.Instance.LoadNextLevel();
         
     }
 }

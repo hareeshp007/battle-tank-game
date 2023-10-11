@@ -14,14 +14,15 @@ public class EnemyController
     private BulletServices _bulletServices;
     private UIManager _manager;
 
-    public EnemyController(EnemyModel model,  EnemyScriptableObject EnemySO,Transform Enemypos, List<GameObject> enemies,BulletServices bulletServices,UIManager uiManager)
+    public EnemyController(EnemyModel model,  EnemyScriptableObject EnemySO,Transform Enemypos, List<GameObject> enemies,BulletServices bulletServices,UIManager uiManager,TankService tankService)
     {
         _bulletServices = bulletServices;
         _manager = uiManager;
         _model = model;
         _view = EnemySO.EnemyView;
         _scriptableObject = EnemySO;
-        _view.SetEnemyController(this);
+        TankView player = tankService.GetPlayer();
+        _view.SetEnemyController(this,player);
         _view.SetPatrolPosition(EnemySO.PatrolPosition, EnemySO.PatrolRadius);
         GameObject enemy= GameObject.Instantiate(_view.gameObject, Enemypos);
         enemies.Add(enemy);

@@ -32,6 +32,20 @@ public class LevelManeger : MonoBehaviour
         SceneManager.LoadScene(LevelNumber);
         Debug.Log("Loading Level :" + LevelNumber);
     }
+    public void LoadNextLevel()
+    {
+        UnityEngine.SceneManagement.Scene currentscene = SceneManager.GetActiveScene();
+        int currentsceneIndex = Array.FindIndex(Levels, level => level == currentscene.name);
+        int nextsceneindex = currentsceneIndex + 1;
+        if (nextsceneindex < Levels.Length)
+        {
+            SceneManager.LoadScene(Levels[nextsceneindex]);
+        }
+        else
+        {
+            SceneManager.LoadScene(0);
+        }
+    }
     public void MarkCurrentLevelCompleted()
     {
         UnityEngine.SceneManagement.Scene currentscene = SceneManager.GetActiveScene();

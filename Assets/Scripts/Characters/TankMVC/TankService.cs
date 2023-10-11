@@ -41,5 +41,9 @@ public class TankService : MonoBehaviour
         this.playerView.SetBulletService(_BulletServices);
         CameraFollow.SetTarget(this.playerView.gameObject.transform);
     }
+    public TankView GetPlayer()
+    {
+        return this.playerView;
+    }
 
 }

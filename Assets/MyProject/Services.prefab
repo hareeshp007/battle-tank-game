@@ -119,6 +119,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 5566654864281657939}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &5429896359424823140 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 439777040275696951, guid: 2774200976801b242b22e712d94065d6,
+    type: 3}
+  m_PrefabInstance: {fileID: 5566654864281657939}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78e150a25b522ef4f8c33d4cf71da5ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &7298675896097234872
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -127,6 +139,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7576147506758038591}
     m_Modifications:
+    - target: {fileID: 1164061665686549188, guid: d0fe393ae5fb9334c93277f8cc748118,
+        type: 3}
+      propertyPath: tank
+      value: 
+      objectReference: {fileID: 5429896359424823140}
     - target: {fileID: 1164061665686549188, guid: d0fe393ae5fb9334c93277f8cc748118,
         type: 3}
       propertyPath: EnemyList

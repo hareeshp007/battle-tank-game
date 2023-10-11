@@ -62,7 +62,6 @@ public class EnemyView : MonoBehaviour,IDamegable
         currentState = patrolState;
         currentState.OnEnterState();
         agent = GetComponent<NavMeshAgent>();
-        player = GameObject.FindGameObjectWithTag("Player").GetComponent<TankView>();
         timer = 0;
     }
     public TankView GetTankView()
@@ -110,13 +109,14 @@ public class EnemyView : MonoBehaviour,IDamegable
         Debug.Log("Current EnemyState :" + currentState.GetState().ToString());
         currentState.OnEnterState();
     }
-    public void SetEnemyController(EnemyController enemyController)
+    public void SetEnemyController(EnemyController enemyController,TankView tank)
         {
         _EnemyController = enemyController;
         speed=_EnemyController.GetSpeed();
         health = _EnemyController.GetHealth();
         Debug.Log("EnemyController-EnemyView Connection Established" + _EnemyController.ToString());
         _EnemyController.SetBulletServices(this);
+        player = tank;
         }
     public bool RandomPoint(Vector3 center, float range, out Vector3 result)
     {

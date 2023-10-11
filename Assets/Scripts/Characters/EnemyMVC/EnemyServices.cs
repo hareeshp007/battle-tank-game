@@ -6,6 +6,7 @@ using UnityEngine;
 
 public class EnemyServices : MonoBehaviour
 {
+    public TankService tank;
     [SerializeField]
     private EnemyScriptableObjectList EnemyList;
     public Transform[] Spawnpos;
@@ -32,15 +33,12 @@ public class EnemyServices : MonoBehaviour
             CreateEnemy(i); 
         }
         uiManager.GUIupdateEnemies(enemies.Count);
-        //EnemyScriptableObject Enemy = EnemyList.EnemyObjects[0];
-        // EnemyModel enemyModel = new EnemyModel(Enemy);
-        //EnemyController controller = new EnemyController(enemyModel, Enemy);
     }
     private void CreateEnemy(Transform pos)
     {
         EnemyScriptableObject Enemy = EnemyList.EnemyObjects[0];
         EnemyModel enemyModel = new EnemyModel(Enemy);
-        controller = new EnemyController(enemyModel, Enemy,pos,enemies,bulletServices,uiManager);
+        controller = new EnemyController(enemyModel, Enemy,pos,enemies,bulletServices,uiManager,tank);
     }
     public IEnumerator KillAllEnemies()
     {

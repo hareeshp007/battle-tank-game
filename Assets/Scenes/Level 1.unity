@@ -4383,6 +4383,11 @@ PrefabInstance:
       objectReference: {fileID: 6182548133601062308}
     - target: {fileID: 8461569789518785916, guid: 0486c660d16381f448d66a4b677cbeba,
         type: 3}
+      propertyPath: tank
+      value: 
+      objectReference: {fileID: 6182548133601062308}
+    - target: {fileID: 8461569789518785916, guid: 0486c660d16381f448d66a4b677cbeba,
+        type: 3}
       propertyPath: uiManager
       value: 
       objectReference: {fileID: 1340512716}
