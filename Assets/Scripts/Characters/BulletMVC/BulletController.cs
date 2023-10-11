@@ -12,7 +12,7 @@ public class BulletController
         _bulletscript = BulletSO;
         _bulletview = _bulletscript.bulletView;
         _bulletview.SetBulletController(this, _bulletmodel);
-        //GameObject bullet= GameObject.Instantiate(_bulletscript.bulletView.gameObject);
+
     }
     public int GetSpeed()
     {

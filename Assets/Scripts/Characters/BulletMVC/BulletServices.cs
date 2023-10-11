@@ -32,11 +32,8 @@ public class BulletServices : MonoBehaviour
 
     public void Shoot(Transform shootPoint,GameObject shooter)
     {
-        //Transform shootPoint = PlayerService.PlayerController.PlayerView.GetshootPoint();
-        //Bullet();
         SoundManager.Instance.Play(Sounds.ShotFired);
         BulletView bullet = ServicePoolBullet.shoot(shootPoint,shooter,bulletPrefab);
-        //BulletView bullet = GameObject.Instantiate<BulletView>(bulletPrefab, shootPoint.position, shootPoint.rotation);
         bullet.SetShooterObject(shooter);
     }
 }

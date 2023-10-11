@@ -1,5 +1,5 @@
 
-using System;
+
 using System.Collections;
 using Tanks.tank;
 using UnityEngine;
@@ -9,7 +9,7 @@ public class EnemyView : MonoBehaviour,IDamegable
 {
     public EnemyController _EnemyController { get; private set; }
     public NavMeshAgent agent;
-    public float range; //radius of sphere
+    public float range; 
     public ParticleSystem EnemyExplosion;
     [SerializeField]
     private float PSDelay;
@@ -18,9 +18,7 @@ public class EnemyView : MonoBehaviour,IDamegable
     private float chaseSqrRadius = 900f;
     [SerializeField]
     private float attackSqrRadius = 100f;
-    public Transform centrePoint; //centre of the area the agent wants to move around in
-                                  //instead of centrePoint you can set it as the transform of the agent if you don't care about a specific area
-
+    public Transform centrePoint; 
     public bool EnemyisMoving { get; private set; }
     [SerializeField]
     private TankView player;
@@ -29,7 +27,6 @@ public class EnemyView : MonoBehaviour,IDamegable
 
     [SerializeField]
     private EnemyStates currentState;
-    private EnemyIdleState idleState;
     [SerializeField]
     private EnemyPatrolling patrolState;
     [SerializeField]
@@ -123,8 +120,7 @@ public class EnemyView : MonoBehaviour,IDamegable
 
         Vector3 randomPoint = center + UnityEngine.Random.insideUnitSphere * range; //random point in a sphere 
         NavMeshHit hit;
-        if (NavMesh.SamplePosition(randomPoint, out hit, 1.0f, NavMesh.AllAreas)) //documentation: https://docs.unity3d.com/ScriptReference/AI.NavMesh.SamplePosition.html
-        {
+        if (NavMesh.SamplePosition(randomPoint, out hit, 1.0f, NavMesh.AllAreas))         {
             result = hit.position;
             return true;
         }
@@ -144,18 +140,17 @@ public class EnemyView : MonoBehaviour,IDamegable
     public IEnumerator Death()
     {       
         yield return new WaitForSeconds(PSDelay);
-        //particle effect
         Destroy(this.gameObject);
     }
     public void Patrol()
     {
         Debug.Log("Entered patrolview");
-        if (agent.remainingDistance <= agent.stoppingDistance) //done with path
+        if (agent.remainingDistance <= agent.stoppingDistance) 
         {
             Vector3 point;
-            if (RandomPoint(centrePoint.position, range, out point)) //pass in our centre point and radius of area
+            if (RandomPoint(centrePoint.position, range, out point)) 
             {
-                Debug.DrawRay(point, Vector3.up, Color.blue, 1.0f); //so you can see with gizmos
+                Debug.DrawRay(point, Vector3.up, Color.blue, 1.0f); 
                 agent.SetDestination(point);
             }
         }
